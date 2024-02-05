@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-class HelloWorld {
+class Gradingsystem{
 
     public static double highestGrade(double[][] arr, int studentIndex, int subjectCount) {
         double high = arr[studentIndex][0];
