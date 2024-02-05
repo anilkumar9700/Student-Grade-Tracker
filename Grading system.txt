@@ -1,0 +1,67 @@
+import java.util.Scanner;
+
+class HelloWorld {
+
+    public static double highestGrade(double[][] arr, int studentIndex, int subjectCount) {
+        double high = arr[studentIndex][0];
+
+        for (int j = 0; j < subjectCount; j++) {
+            if (high < arr[studentIndex][j]) {
+                high = arr[studentIndex][j];
+            }
+        }
+        return high;
+    }
+
+    public static double lowestGrade(double[][] arr, int studentIndex, int subjectCount) {
+        double low = arr[studentIndex][0];
+
+        for (int j = 0; j < subjectCount; j++) {
+            if (low > arr[studentIndex][j]) {
+                low = arr[studentIndex][j];
+            }
+        }
+        return low;
+    }
+
+    public static double avg(double[][] arr, int studentIndex, int subjectCount) {
+        double sum = 0;
+
+        for (int j = 0; j < subjectCount; j++) {
+            sum += arr[studentIndex][j];
+        }
+        return sum / subjectCount;
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("Enter the number of students: ");
+        int studentCount = sc.nextInt();
+        System.out.println("Enter the number of subjects: ");
+        int subjectCount = sc.nextInt();
+
+        double[][] arr = new double[studentCount][subjectCount];
+
+        System.out.println("Enter the grades of students for each subject:");
+
+        for (int i = 0; i < studentCount; i++) {
+            System.out.println("Student " + (i + 1) + ":");
+            for (int j = 0; j < subjectCount; j++) {
+                System.out.print("Enter grade for subject " + (j + 1) + ": ");
+                arr[i][j] = sc.nextDouble();
+            }
+        }
+
+        for (int i = 0; i < studentCount; i++) {
+            double high = highestGrade(arr, i, subjectCount);
+            double low = lowestGrade(arr, i, subjectCount);
+            double avg = avg(arr, i, subjectCount);
+
+            System.out.println("\nResults for Student " + (i + 1) + ":");
+            System.out.println("Highest grade: " + high);
+            System.out.println("Lowest grade: " + low);
+            System.out.println("Average grade: " + avg);
+        }
+    }
+}
